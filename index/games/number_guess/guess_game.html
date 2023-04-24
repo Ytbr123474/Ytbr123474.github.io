@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Guess the Number</title>
+	<style>
+		body {
+			background-color: #F5F5F5;
+			font-family: Arial, sans-serif;
+		}
+
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+			color: #555;
+		}
+
+		p {
+			text-align: center;
+			font-size: 20px;
+			color: #555;
+			margin-top: 30px;
+		}
+
+		input[type=text] {
+			padding: 10px;
+			font-size: 18px;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+			margin-top: 20px;
+			width: 300px;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		button {
+			padding: 10px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			font-size: 20px;
+			cursor: pointer;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 20px;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+		}
+
+		button:hover {
+			background-color: #3E8E41;
+		}
+
+		.result {
+			margin-top: 20px;
+			text-align: center;
+			font-size: 24px;
+			color: #555;
+			display: none;
+		}
+
+		.result.correct {
+			color: #4CAF50;
+			display: block;
+		}
+
+		.result.incorrect {
+			color: #F44336;
+			display: block;
+		}
+	</style>
+	<script>
+		window.onload = function() {
+			//generate random number between 1-100
+			var randomNumber = Math.floor(Math.random() * 100) + 1;
+			
+			//check user's guess against the random number
+			function checkGuess() {
+				var userGuess = document.getElementById("guess").value;
+				var result = document.getElementById("result");
+				
+				if (userGuess == randomNumber) {
+					result.innerHTML = "Congratulations, you guessed the number!";
+					result.classList.add("correct");
+					result.classList.remove("incorrect");
+				}
+				else if (userGuess < randomNumber) {
+					result.innerHTML = "Too low, try again.";
+					result.classList.add("incorrect");
+					result.classList.remove("correct");
+				}
+				else if (userGuess > randomNumber) {
+					result.innerHTML = "Too high, try again.";
+					result.classList.add("incorrect");
+					result.classList.remove("correct");
+				}
+				
+				// show the result message
+				result.style.display = "block";
+			}
+			
+			//bind checkGuess function to button click
+			document.getElementById("guessButton").onclick = checkGuess;
+		}
+	</script>
+</head>
+<body>
+	<h1>Guess the Number</h1>
+	<p>Guess a number between 1 and 100:</p>
+	<input type="text" id="guess">
+	<button id="guessButton">Guess</button>
+	<div id="result" class="result"></div>
+</body>
+</html>

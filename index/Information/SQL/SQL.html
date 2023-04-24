@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <script>
+      function checkPassword() {
+        var password = document.getElementById('password').value;
+        if(password === 'SQL') {
+          document.getElementById('login-form').style.display = 'none';
+          document.getElementById('description').style.display = 'block';
+        } else {
+          alert('Incorrect password. Please try again.');
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Login Page</h1>
+    <form id="login-form">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required><br><br>
+      <button type="button" onclick="checkPassword()">Login</button>
+    </form>
+    <div id="description" style="display: none;">
+      <p>SQL attacks are a type of cyber attack that target the security vulnerabilities of SQL databases. In a SQL attack, an attacker uses malicious SQL code to gain access to sensitive information or to modify, delete, or steal data from a database.</p>
+      <p>One example of a SQL attack is SQL injection, where an attacker inserts malicious SQL code into a vulnerable input field, such as a login form, in order to trick the database into executing the code. This can allow the attacker to bypass authentication, access sensitive information, or modify the database.</p>
+      <p>Another example is a denial-of-service (DoS) attack, where an attacker sends a large number of requests to a database in order to overload it and prevent legitimate users from accessing it. This can cause the website to become slow or unresponsive.</p>
+      <p>SQL attacks are dangerous and can compromise the security of the website. Please do not attempt any SQL attacks on this website or any other website.</p>
+    </div>
+  </body>
+</html>
